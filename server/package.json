@@ -1,0 +1,7 @@
+{
+  "name": "@double-six/server",
+  "version": "1.0.0",
+  "dependencies": {
+    "@double-six/shared": "*"
+  }
+}
