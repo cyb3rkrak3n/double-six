@@ -1,6 +1,6 @@
 {
   "name": "@double-six/shared",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts"
+  "main": "types/index.ts",
+  "types": "types/index.ts"
 }
