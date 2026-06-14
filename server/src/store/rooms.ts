@@ -6,6 +6,9 @@ export const players = new Map<string, Player>()
 // room code -> Room
 export const rooms = new Map<string, Room>()
 
+// playerId -> socketId
+export const socketIds = new Map<string, string>()
+
 export function generateRoomCode(): string {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789' // no ambiguous chars
   let code: string

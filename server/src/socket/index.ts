@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io'
 import { randomUUID } from 'crypto'
-import { players } from '../store/rooms'
+import { players, socketIds } from '../store/rooms'
 import { RegisterPlayerPayload, PlayerRegisteredPayload } from '@double-six/shared'
 import { registerRoomHandlers } from './room'
 import { registerLobbyHandlers } from './lobby'
@@ -23,6 +23,7 @@ export function registerSocketHandlers(io: Server, socket: Socket) {
     socket.data.playerId = player.playerId
     socket.data.token = player.token
     socket.data.playerName = player.playerName
+    socketIds.set(player.playerId, socket.id)
 
     const response: PlayerRegisteredPayload = {
       playerId: player.playerId,
