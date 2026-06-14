@@ -5,6 +5,7 @@ import { RegisterPlayerPayload, PlayerRegisteredPayload } from '@double-six/shar
 import { registerRoomHandlers } from './room'
 import { registerLobbyHandlers } from './lobby'
 import { registerGameHandlers } from './game'
+import { registerDisconnectionHandlers, handleReconnection } from './disconnection'
 
 export function registerSocketHandlers(io: Server, socket: Socket) {
   socket.on('register_player', (payload: RegisterPlayerPayload) => {
@@ -28,10 +29,14 @@ export function registerSocketHandlers(io: Server, socket: Socket) {
       token: player.token,
       playerName: player.playerName,
     }
+
     socket.emit('player_registered', response)
+
+    handleReconnection(io, socket)
   })
 
   registerRoomHandlers(io, socket)
   registerLobbyHandlers(io, socket)
   registerGameHandlers(io, socket)
+  registerDisconnectionHandlers(io, socket)
 }
