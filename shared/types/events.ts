@@ -3,7 +3,7 @@ import { PlayerView } from './view'
 import { Tile } from './tile'
 
 // Identity
-export interface RegisterPlayerPayloasd{
+export interface RegisterPlayerPayload{
     token?: string
     playerName: string
 }
@@ -51,7 +51,7 @@ export interface StartErrorPayload{
 
 // In-Game
 export interface GameStartedPayload{
-    PlayerView: PlayerView
+    playerView: PlayerView
 }
 
 export interface PlaceTilePayload{
