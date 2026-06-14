@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { players } from '../store/rooms'
 import { RegisterPlayerPayload, PlayerRegisteredPayload } from '@double-six/shared'
 import { registerRoomHandlers } from './room'
+import { registerLobbyHandlers } from './lobby'
 
 export function registerSocketHandlers(io: Server, socket: Socket) {
   socket.on('register_player', (payload: RegisterPlayerPayload) => {
@@ -30,4 +31,5 @@ export function registerSocketHandlers(io: Server, socket: Socket) {
   })
 
   registerRoomHandlers(io, socket)
+  registerLobbyHandlers(io, socket)
 }
