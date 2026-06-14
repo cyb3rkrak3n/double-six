@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
+import type { ReactNode } from 'react'
 import { io, Socket } from 'socket.io-client'
-import { PlayerRegisteredPayload } from '@double-six/shared'
+import type { PlayerRegisteredPayload } from '@double-six/shared'
 
 interface SocketContextValue {
   socket: Socket | null
@@ -25,7 +26,7 @@ export function SocketProvider({ children }: { children: ReactNode }) {
     socketRef.current = socket
 
     socket.on('player_registered', (payload: PlayerRegisteredPayload) => {
-      localStorage.setItem(TOKEN_KEY, payload.token)
+      sessionStorage.setItem(TOKEN_KEY, payload.token)
       setPlayerId(payload.playerId)
       setPlayerName(payload.playerName)
       setRegistered(true)
@@ -39,7 +40,7 @@ export function SocketProvider({ children }: { children: ReactNode }) {
   function register(name: string) {
     const socket = socketRef.current
     if (!socket) return
-    const token = localStorage.getItem(TOKEN_KEY) || undefined
+    const token = sessionStorage.getItem(TOKEN_KEY) || undefined
     socket.emit('register_player', { token, playerName: name })
   }
 

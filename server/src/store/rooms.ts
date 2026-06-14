@@ -10,7 +10,7 @@ export function generateRoomCode(): string {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789' // no ambiguous chars
   let code: string
   do {
-    code = Array.from({ length: 4 }, () => chars[Math.floor(Math.random() * chars.length)]).join('')
+    code = Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join('')
   } while (rooms.has(code))
   return code
 }
@@ -22,5 +22,5 @@ export function createEmptySeats(): Room['seats'] {
     playerName: null,
     connected: false,
     autoPlay: false,
-  })) as Room['seats']
+  })) as unknown as Room['seats']
 }
