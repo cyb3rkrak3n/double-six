@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useSocket } from './useSocket'
-import {
+import type {
   Room,
   RoomCreatedPayload,
   RoomJoinedPayload,

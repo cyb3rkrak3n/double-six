@@ -1,4 +1,4 @@
-import { Seat } from '@double-six/shared'
+import type { Seat } from '@double-six/shared'
 
 interface Props {
   seat: Seat

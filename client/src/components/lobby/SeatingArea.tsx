@@ -1,4 +1,4 @@
-import { Room } from '@double-six/shared'
+import type { Room } from '@double-six/shared'
 import { SeatSlot } from './SeatSlot'
 
 interface Props {
